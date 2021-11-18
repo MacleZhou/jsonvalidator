@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+    <script src="request_rules.js"></script>
+    <script src="RuleValidation.js"></script>
+    <script src="ValidateRequest.js"></script>
+  </head>
+
+  <body>
+    <input type="button" value="Validate Rule" onclick="StartValidatingRule()" /><br /><br />
+    <input type="button" value="Validate Request" onclick="OnclickValidateRequest()"/>
+    <div id="response"></div>
+  </body>
+  <script>
+    function StartValidatingRule() {
+      var ValidateRuleObj = new ValidateRule(ValidationRules);
+      document.getElementById("response").innerHTML = ValidateRuleObj.getErrors();
+      // This is used to validate the rules.
+    }
+    function OnclickValidateRequest() {
+      var obj = new ValidateRequest(dummyrequest, "DUMMY_REQUEST");
+      document.getElementById("response").innerHTML = obj.getResult();
+      // this is used to validate the requests.
+    }
+    var dummyrequest = {
+      REQUESTID: "PLDD12345",
+      CASE_NUMBER: "354684210",
+      AADHARNO: "454554577",
+      FILESAMPLE: "PDF",
+      LOCATION: "KARACHI",
+      PURPOSE: "AL",
+      DATE_REQUEST_MADE: "28 Oct 2020",
+      DATE_REQUEST_APPROVED: "28 Oct 2020",
+      USERID: "V2121",
+      USERTYPE: "123",
+      REQUEST_SOURCE: "123",
+      MOBILE_NO: [
+        {
+          REGISTERED_USER: "SAI1",
+          MOBILE_NO: "4562135232",
+        },
+        {
+          REGISTERED_USER: "SAI2",
+          MOBILE_NO: "45678954213",
+        },
+      ],
+      DATA: [
+        {
+          FILENAME: "collateraldocuments",
+          FILE_TYPE: "TLPDF",
+          FILE_HASH: "O2T849867",
+        },
+        {
+          FILENAME: "collateraldocuments",
+          PDFType: "SD-PDF",
+          HASHVALUE: "G4354GT66",
+          OtherInfo: {
+            first_party_name: "xxxx",
+            first_party_address: {
+              street_address: "xxxx",
+            },
+            second_party_address: {
+              street_address: "xxxx",
+            },
+            second_party_details: {
+              second_party_id_number: "xxxx",
+            },
+            qqqq_details: {
+              district: "1601-PALGHAR",
+              property_address: {
+                pincode: "xxxx",
+              },
+              property_area: "123",
+              property_area_unit: "Sq.Meter",
+            },
+          },
+        },
+      ],
+    };
+  </script>
+</html>
