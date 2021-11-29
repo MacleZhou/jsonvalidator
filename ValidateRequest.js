@@ -44,7 +44,7 @@ ValidateRequest.prototype.validateObject = function (rule, request) {
                 // Means it is not a Mandatory Value
                 if (!request.hasOwnProperty(element) || (typeof request[element] != "boolean" && !request[element])) {
                     this.Depth.pop();
-                    return true;
+                    continue;
                 }
             }
             if (typeof Attributes[rule[element][0]] == "function") {
